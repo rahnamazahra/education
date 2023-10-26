@@ -1,0 +1,11 @@
+[
+    {
+        "course_id": 1,
+        "title": "Title of the slider",
+        "link": "https://site.test/course/slug-of-the-course",
+        "image_url": "https://site.test/storage/image.jpg",
+        "rating":5,
+        "teacher": "name of teacher",
+        "profile_image_url_teacher": "https://site.test/storage/profile/teacher/image.jpg"
+    }
+]

@@ -1,0 +1,11 @@
+[
+    {
+        "course_id": 1,
+        "title" : "Title of the Course",
+        "link": "https://site.test/course/slug-of-the-lessons",
+        "image_url": "https://site.test/storage/image.jpg",
+        "capacity": 26,
+        "students": 26,
+        "rating":3
+    }
+]
