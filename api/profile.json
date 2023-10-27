@@ -7,16 +7,16 @@
         "mobile": "09111111111",
         "profile_image" : ""
     },
-    "my-course":
+    "my-courses":
     [
         {
-           
+
             "course_id": 1,
             "title": "Title of the slider",
             "link": "https://site.test/course/slug-of-the-course",
             "image_url": "https://site.test/storage/image.jpg",
             "teacher": "name of teacher",
-            "profile_image_url_teacher": "https://site.test/storage/profile/teacher/image.jpg"
+            "teacher_profile_image_url": "https://site.test/storage/profile/teacher/image.jpg"
         }
     ]
 

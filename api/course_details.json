@@ -1,0 +1,47 @@
+
+    {
+        "course_id": 1,
+        "title": "Title of the Course",
+        "subtitle": "Subitle of the Course",
+        "link": "https://site.test/course/slug-of-the-course",
+        "image_url": "https://site.test/storage/image.jpg",
+        "rating":5,
+        "total_votes": 144,
+        "teacher": "Name of Teacher",
+        "profile_image_url_teacher": "https://site.test/storage/profile/teacher/image.jpg",
+        "price": "10500000",
+        "discount":"12%",
+        "capacity": 26,
+        "students": 26,
+        "language": "fa",
+        "level": "Elementary Level",
+        "total_lessons": 12,
+        "total_videos": 98,
+        "total_houres": 144,
+        "description": "Description of the Course",
+        "lessons":[
+            {
+                "lesson_id": 1,
+                "title": "Title of the Lesson",
+                "total_video": 3,
+                "total_houre": 16,
+                "videos": [
+                    {
+                        "title": "Title of the Video",
+                        "time":4
+                    }
+                ]
+
+            }
+        ],
+        "comments":[
+            {
+                "rating":5,
+                "name": "Name of User",
+                "profile_image_url_user": "https://site.test/storage/profile/user/image.jpg",
+                "comment": "Comment of the Course",
+                "date": "1 days ago"
+            }
+        ]
+    }
+
