@@ -1,24 +1,8 @@
 
 {
-    "my-profile":
-    {
-        "username": "username",
-        "email": "user@email.com",
-        "mobile": "09111111111",
-        "profile_image" : ""
-    },
-    "my-courses":
-    [
-        {
-
-            "course_id": 1,
-            "title": "Title of the slider",
-            "link": "https://site.test/course/slug-of-the-course",
-            "image_url": "https://site.test/storage/image.jpg",
-            "teacher": "name of teacher",
-            "teacher_profile_image_url": "https://site.test/storage/profile/teacher/image.jpg"
-        }
-    ]
-
+    "username": "username",
+    "email": "user@email.com",
+    "mobile": "09111111111",
+    "profile_image" : ""
 }
 

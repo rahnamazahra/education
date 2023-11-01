@@ -4,7 +4,7 @@
         "title": "Title of the Course",
         "subtitle": "Subitle of the Course",
         "link": "https://site.test/course/slug-of-the-course",
-        "image_url": "https://site.test/storage/image.jpg",
+        "ivideoe_url": "https://site.test/storage/video.jpg",
         "rating":5,
         "total_votes": 144,
         "teacher": "Name of Teacher",

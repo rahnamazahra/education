@@ -1,5 +1,5 @@
 {
-    "name": "name",
-    "email": "user@email.com",
-    "message": "message"
+    "username": "username",
+    "password": "",
+    "confirmed-password": ""
 }

@@ -1,6 +1,6 @@
 [
     {
-        "subcategory_id": 1,
+        "category_id": 1,
         "course_id": 1,
         "title" : "Title of the Course",
         "link": "https://site.test/course/slug-of-the-lessons",
