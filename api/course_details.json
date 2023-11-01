@@ -4,14 +4,14 @@
         "title": "Title of the Course",
         "subtitle": "Subitle of the Course",
         "link": "https://site.test/course/slug-of-the-course",
-        "ivideoe_url": "https://site.test/storage/video.jpg",
+        "video_url": "https://site.test/storage/course/video.jpg",
+        "image_path": "https://site.test/storage/course/image.jpg",
         "rating":5,
         "total_votes": 144,
         "teacher": "Name of Teacher",
         "profile_image_url_teacher": "https://site.test/storage/profile/teacher/image.jpg",
         "price": "10500000",
         "discount":"12%",
-        "capacity": 26,
         "students": 26,
         "language": "fa",
         "level": "Elementary Level",
@@ -27,6 +27,7 @@
                 "total_houre": 16,
                 "videos": [
                     {
+                        "link":"https://site.test/lesson/video.mp4",
                         "title": "Title of the Video",
                         "time":4
                     }

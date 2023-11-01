@@ -12,9 +12,6 @@ return new class extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description')->nullable();
-            $table->text('video')->nullable();
-            $table->longtext('article')->nullable();
             $table->foreignId('course_id')->constrained();
             $table->timestamps();
         });
