@@ -13,6 +13,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->foreignId('course_id')->constrained();
+            $table->unique('id', 'course_id');
             $table->timestamps();
         });
     }
