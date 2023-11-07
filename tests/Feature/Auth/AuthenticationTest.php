@@ -4,6 +4,7 @@ namespace Tests\Feature\Auth;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
@@ -12,11 +13,13 @@ class AuthenticationTest extends TestCase
 
     public function test_users_can_authenticate_using_the_login_screen(): void
     {
-        $user = User::factory()->create();
-        // dd($user);
+        $user = User::factory()->create([
+            'password' => Hash::make('1234567890'),
+        ]);
+
         $response = $this->post('/login', [
-            'username' => $user->username,
-            'password' => 'password',
+            'username' => 'username',
+            'password' => '1234567890',
         ]);
 
         $this->assertAuthenticated();

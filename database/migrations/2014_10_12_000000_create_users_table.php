@@ -13,10 +13,10 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('username')->unique();
-            // $table->string('email')->unique()->nullable();
             $table->string('password');
             $table->string('mobile')->unique()->nullable();
             $table->string('profile_image')->nullable();
+            $table->enum('role', ['guest','student', 'teacher'])->default('guest');
             $table->rememberToken();
             $table->timestamps();
         });

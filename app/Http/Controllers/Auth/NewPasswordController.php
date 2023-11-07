@@ -23,7 +23,7 @@ class NewPasswordController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-  .
+  
         $status = Password::reset(
             $request->only('username', 'password', 'password_confirmation', 'token'),
             function ($user) use ($request) {
