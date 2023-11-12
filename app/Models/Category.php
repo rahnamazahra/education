@@ -12,8 +12,13 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = [
-        "title",
+        "name",
         "slug",
+    ];
+
+    protected $hidden = [
+        'updated_at',
+        'created_at',
     ];
 
     public function subcategories(): HasMany

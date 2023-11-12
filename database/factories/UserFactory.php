@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 /**
@@ -10,27 +11,18 @@ use Illuminate\Support\Str;
  */
 class UserFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+
     public function definition(): array
     {
         return [
-            'username' => 'username',
-            'password' => '$2y$04$IQg0BXZHNtK6X8FCz57q5ex/W/F0Nz2TLFxCiqMO3KDKE2BeTVoL6', // password
-            'remember_token' => Str::random(10),
+            'name' => $this->faker->name,
+            'username' => $this->faker->unique()->username,
+            'password' => Hash::make('1234567890'),
+            'role' => fake()->randomElement(['guest','teacher']),
+            'job' => fake()->jobTitle,
+            'avatar' => 'avatar/pic1.jpg',
+
         ];
     }
 
-    /**
-     * Indicate that the model's username address should be unverified.
-     */
-    public function unverified(): static
-    {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
-        ]);
-    }
 }

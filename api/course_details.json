@@ -2,7 +2,7 @@
     {
         "course_id": 1,
         "title": "Title of the Course",
-        "subtitle": "Subitle of the Course",
+        "totalvideoDuration": 144,
         "link": "https://site.test/course/slug-of-the-course",
         "video_url": "https://site.test/storage/course/video.jpg",
         "image_path": "https://site.test/storage/course/image.jpg",

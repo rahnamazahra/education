@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        return Category::with('subcategories.courses')->get();
+
     }
 
 }

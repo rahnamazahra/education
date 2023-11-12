@@ -17,12 +17,16 @@ class User extends Authenticatable
         'email',
         'password',
         'mobile',
-        'profile_image',
+        'avatar',
     ];
 
     protected $hidden = [
         'password',
         'remember_token',
+        'mobile',
+        'created_at',
+        'updated_at',
+        'role',
     ];
 
     protected $casts = [
@@ -33,5 +37,9 @@ class User extends Authenticatable
     public function courses()
     {
         return $this->belongsToMany(Course::class);
+    }
+    public function ratings()
+    {
+        return $this->hasMany(rating::class);
     }
 }

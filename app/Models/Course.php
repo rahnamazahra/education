@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class Course extends Model
 {
@@ -21,11 +21,10 @@ class Course extends Model
         "discount",
         "language",
         "description",
-        "image",
+        "banner",
         "teacher_id",
         "subcategory_id"
     ];
-
 
     public function subcategory(): BelongsTo
     {
@@ -47,22 +46,17 @@ class Course extends Model
         return $this->hasMany(Rating::class);
     }
 
-    public function lessons(): HasMany
+    public function chapters(): HasMany
     {
-        return $this->hasMany(Lesson::class);
+        return $this->hasMany(Chapter::class);
     }
 
-    public static function scopeSearch($query, $search)
+    public function lessons(): HasManyThrough
     {
-        return $query
-            ->where('name', 'like', "%$search%")
-            ->orWhere('category.name', 'like', "%$search%")
-            ->orWhereHas('lessons', function ($q) use ($search) {
-                return $q->where('lessons.name', 'like', "%$search%");
-            });
+        return $this->hasManyThrough(Lesson::class, Chapter::class);
     }
 
-    public function totalRating(): Attribute
+    public function totalRatings(): Attribute
     {
         return Attribute::make(
             get: fn() => ceil($this->ratings()->avg('rating')),
@@ -76,10 +70,31 @@ class Course extends Model
         );
     }
 
+    public function totalChapters(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->chapters()->count(),
+        );
+    }
+
     public function totalStudents(): Attribute
     {
         return Attribute::make(
             get: fn() => $this->students()->count(),
+        );
+    }
+
+    public function totalVotes():Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->ratings()->count(),
+        );
+    }
+
+    public function totalVideos():Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->lessons()->with('videos')->count(),
         );
     }
 
@@ -91,5 +106,29 @@ class Course extends Model
 
         return sprintf('%02d:%02d:%02d', ($seconds/ 3600),($seconds/ 60 % 60), $seconds% 60);
     }
+
+    public function getLinkAttribute()
+    {
+        return route('course.view', $this);
+    }
+
+    public function discountCalculation(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => number_format($this->price - ($this->price * ($this->discount / 100))),
+        );
+    }
+
+    public static function scopeSearch($query, $search)
+    {
+        return $query
+            ->where('name', 'like', "%$search%")
+            ->orWhere('category.name', 'like', "%$search%")
+            ->orWhereHas('lessons', function ($q) use ($search) {
+                return $q->where('lessons.name', 'like', "%$search%");
+            });
+    }
+
+
 
 }

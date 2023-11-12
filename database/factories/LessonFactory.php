@@ -2,13 +2,14 @@
 
 namespace Database\Factories;
 
+use App\Models\Chapter;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Category>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Lesson>
  */
-class CategoryFactory extends Factory
+class LessonFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,6 +21,7 @@ class CategoryFactory extends Factory
         return [
             'name' => $this->faker->name,
             'slug' => Str::slug($this->faker->slug),
+            'chapter_id' => $this->faker->randomElement(Chapter::all())['id'],
         ];
     }
 }

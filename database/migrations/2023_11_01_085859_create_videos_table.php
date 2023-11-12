@@ -13,6 +13,9 @@ return new class extends Migration
             $table->string('title');
             $table->integer('duration');
             $table->text('path');
+            $table->foreignId('course_id')->constrained();
+            $table->foreignId('chapter_id')->constrained();
+            $table->foreignId('lesson_id')->constrained();
             $table->timestamps();
         });
     }

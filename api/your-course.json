@@ -1,6 +1,5 @@
     [
         {
-
             "course_id": 1,
             "title": "Title of the slider",
             "link": "https://site.test/course/slug-of-the-course",
@@ -10,3 +9,4 @@
             "job": "backend"
         }
     ]
+

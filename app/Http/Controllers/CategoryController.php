@@ -7,8 +7,8 @@ use App\Models\Subcategory;
 
 class CategoryController extends Controller
 {
-    public function __invok()
+    public function index()
     {
-        return Category::all();
+        return Category::with('subcategories')->get();
     }
 }

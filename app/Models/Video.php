@@ -10,15 +10,11 @@ class Video extends Model
     use HasFactory;
     protected $fillable = [
         "title",
-        "path"
+        "path",
+        "duration",
+        "lesson_id"
     ];
 
-    // protected $appends = ['get_duration_in_seconds'];
-
-    // public function getDurationInSecondsAttribute()
-    // {
-    //     $parts = explode(':', $this->duration);
-    //     return $parts[0] * 3600 + $parts[1] * 60 + $parts[2];
-    // }
-
 }
+
+

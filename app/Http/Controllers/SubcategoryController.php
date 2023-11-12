@@ -10,6 +10,6 @@ class SubcategoryController extends Controller
 {
     public function __invoke()
     {
-        return Subcategory::all();
+        return Subcategory::with('courses')->get();
     }
 }

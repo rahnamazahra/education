@@ -12,19 +12,23 @@ class Subcategory extends Model
     use HasFactory;
     protected $fillable = [
         "name",
+        "slug",
         "category_id",
     ];
 
-    public function Category(): BelongsTo
+    protected $hidden = [
+        'updated_at',
+        'created_at',
+        'category_id',
+    ];
+
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function Courses(): HasMany
+    public function courses(): HasMany
     {
         return $this->HasMany(Course::class);
     }
-
-
-
 }

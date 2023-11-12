@@ -8,37 +8,39 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
-class Lesson extends Model
+class Chapter extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "name",
+       "name",
         "slug",
-        "chapter_id"
+        "course_id"
     ];
 
-    public function chapter(): BelongsTo
+    public function course(): BelongsTo
     {
-        return $this->belongsTo(Chapter::class);
+        return $this->belongsTo(Course::class);
     }
 
-    public function videos(): HasMany
+    public function lessons(): HasMany
     {
-        return $this->hasMany(Video::class);
+        return $this->hasMany(Lesson::class);
     }
 
-    public function totalVideos():Attribute
+    public function totalLesson(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->videos->count(),
+            get: fn() => $this->lessons()->count(),
         );
     }
 
-    public function durationVideos():Attribute
+    public function totalVideo(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->videos->count(),
+            get: fn() => $this->lessons()->video()->count(),
         );
     }
+
+
 
 }

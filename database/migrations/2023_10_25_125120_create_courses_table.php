@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedInteger('discount');
             $table->string('language');
             $table->longText('description')->nullable();
-            $table->text('image')->nullable();
+            $table->text('banner')->nullable();
             $table->foreignId('subcategory_id')->constrained();
             $table->foreignId('teacher_id')->constrained('users');
             $table->timestamps();

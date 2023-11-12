@@ -2,14 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Models\Course;
+use App\Models\Chapter;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class CoursesSeeder extends Seeder
+class ChapterSeeder extends Seeder
 {
-    public function run(): void
+   public function run(): void
     {
-        Course::factory(10)->create();
+        Chapter::factory(10)->create();
     }
 }

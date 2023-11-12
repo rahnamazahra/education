@@ -10,14 +10,51 @@ class CategorySeeder extends Seeder
 {
     public function run(): void
     {
-        Category::insert( [
-            ['name' => 'Category 1', 'slug' => 'category-1'],
-            ['name' => 'Category 2', 'slug' => 'category-2'],
-            ['name' => 'Category 3', 'slug' => 'category-3'],
-            ['name' => 'Category 4', 'slug' => 'category-4'],
-            ['name' => 'Category 5', 'slug' => 'category-5'],
+        $category = Category::create([
+            'name' => 'Code',
+            'slug' => 'code',
+        ]);
+        $category->subcategories()->create([
+            'name' => 'Python',
+            'slug' => 'python',
+        ]);
+        $category->subcategories()->create([
+            'name' => 'React',
+            'slug' => 'react',
+        ]);
+        $category->subcategories()->create([
+            'name' => 'Unity',
+            'slug' => 'unity',
         ]);
 
+        $category = Category::create([
+            'name' => 'Deisgn',
+            'slug' => 'design',
+        ]);
+        $category->subcategories()->create([
+            'name' => 'UI & UX',
+            'slug' => 'ui-ux',
+        ]);
+        $category->subcategories()->create([
+            'name' => 'Vector',
+            'slug' => 'vector',
+        ]);
+        $category = Category::create([
+            'name' => 'Video',
+            'slug' => 'video',
+        ]);
+        $category->subcategories()->create([
+            'name' => 'After Effect',
+            'slug' => 'after-effect',
+        ]);
+        $category->subcategories()->create([
+            'name' => 'Lightroom',
+            'slug' => 'lightroom',
+        ]);
+        $category->subcategories()->create([
+            'name' => 'Photography',
+            'slug' => 'photography',
+        ]);
     }
 
 

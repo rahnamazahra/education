@@ -15,9 +15,9 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->string('mobile')->unique()->nullable();
-            $table->string('profile_image')->nullable();
+            $table->string('avatar')->nullable();
+            $table->string('job')->nullable();
             $table->enum('role', ['guest','student', 'teacher'])->default('guest');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

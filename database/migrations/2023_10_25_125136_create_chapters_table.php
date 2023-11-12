@@ -9,13 +9,12 @@ return new class extends Migration
 
     public function up(): void
     {
-        Schema::create('ratings', function (Blueprint $table) {
+        Schema::create('chapters', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('rating');
-            $table->text('comment')->nullable();
+            $table->string('name');
+            $table->string('slug')->unique()->nullable();
             $table->foreignId('course_id')->constrained();
-            $table->foreignId('user_id')->constrained();
-            $table->unique(['user_id', 'course_id']);
+            $table->unique('id', 'course_id');
             $table->timestamps();
         });
     }
