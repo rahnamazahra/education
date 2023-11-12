@@ -2,17 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CourseResource;
+use App\Models\Category;
 use App\Models\Course;
 use App\Models\Subcategory;
 
 class SearchOfCategoryController extends Controller
 {
-    public function __invoke(String $categorySlug)
+    public function __invoke(Category $category)
     {
-        Subcategory::query()
-        ->whereHas('category', function ($query) use ($categorySlug) {
-            $query->where('slug', $categorySlug);
-        })
-        ->get();
+        return CourseResource::collection($category->courses()->get());
     }
 }

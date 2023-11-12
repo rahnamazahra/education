@@ -13,8 +13,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique()->nullable();
+            $table->integer('duration');
+            $table->text('path');
             $table->foreignId('chapter_id')->constrained();
-            $table->unique('id', 'chapter_id');
             $table->timestamps();
         });
     }

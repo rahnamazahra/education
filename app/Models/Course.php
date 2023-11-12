@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
 class Course extends Model
 {
@@ -56,6 +57,11 @@ class Course extends Model
         return $this->hasManyThrough(Lesson::class, Chapter::class);
     }
 
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'subcategory_id');
+    }
+
     public function totalRatings(): Attribute
     {
         return Attribute::make(
@@ -93,9 +99,11 @@ class Course extends Model
 
     public function totalVideos():Attribute
     {
-        return Attribute::make(
-            get: fn() => $this->lessons()->with('videos')->count(),
-        );
+        return Attribute::make(function () {
+            return $this->chapters->sum(function ($chapter) {
+                return $chapter->lessons->sum(fn ($lesson) => $lesson->count());
+            });
+        });
     }
 
     public function totalDurations()
@@ -127,6 +135,15 @@ class Course extends Model
             ->orWhereHas('lessons', function ($q) use ($search) {
                 return $q->where('lessons.name', 'like', "%$search%");
             });
+    }
+
+    public static function scopeTopCourses($query)
+    {
+        return $query
+        ->whereHas('ratings', function ($query) {
+            $query->where('rating', 5);
+        })
+        ->get();
     }
 
 

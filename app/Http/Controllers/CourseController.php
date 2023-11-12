@@ -7,7 +7,7 @@ use App\Models\Course;
 
 class CourseController extends Controller
 {
-    public function __invoke(String $slug)
+    public function __invoke()
     {
         return CourseResource::collection(Course::all());
     }

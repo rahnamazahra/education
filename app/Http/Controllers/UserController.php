@@ -7,7 +7,7 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function index()
+    public function __invoke()
     {
         return new UserResource(auth()->user());
     }

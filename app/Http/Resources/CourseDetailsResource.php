@@ -2,7 +2,7 @@
 
 namespace App\Http\Resources;
 
-use App\Http\Resources\LessonResource;
+use App\Http\Resources\ChapterResource;
 use App\Models\Lesson;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -20,15 +20,15 @@ class CourseDetailsResource extends JsonResource
             'discount' => $this->discount,
             'discount_calculation' => $this->discount_calculation,
             'language' => $this->language,
-            'total_lesson' => $this->total_lessons,
+            'total_chapters' => $this->total_chapters,
             'total_students' => $this->total_students,
             'total_rating' => $this->total_ratings,
-            'total_videos' => $this->total_videos,
+            'total_videos' => $this->total_lessons,
             'teacher_name' => $this->teacher->name,
             'teacher_avatar' => $this->teacher->avatar,
             'total_votes' => $this->total_votes,
             'description' => $this->description,
-            'lessons' =>  LessonResource::collection($this->lessons),
+            'chapters' =>  ChapterResource::collection($this->chapters),
             'comments'  => CommentResource::collection($this->ratings),
         ];
 

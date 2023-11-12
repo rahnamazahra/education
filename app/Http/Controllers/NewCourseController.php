@@ -8,11 +8,23 @@ use Illuminate\Http\Request;
 
 class NewCourseController extends Controller
 {
-    public function __invoke()
+    public function __invoke(Request $request)
     {
-        return CourseResource::collection(Course::query()
-            ->latest()
+        $courses = Course::query();
+
+        if($request->query('search')) {
+
+            $search = $request->query('search');
+
+            $courses = Course::whereHas('subcategory', function ($q) use ($search) {
+                $q->where('slug', $search);
+            });
+        }
+
+            return CourseResource::collection($courses->latest()
             ->take(6)
-            ->get());
+            ->get()
+        );
+
     }
 }

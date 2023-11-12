@@ -11,11 +11,9 @@ class LessonResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'slug' => $this->slug,
             'name' => $this->name,
-            'total_videos' => $this->total_videos,
-            'total_duration_videos' => $this->duration_videos,
-            'videos' => VideoResource::collection($this->videos),
+            'link' => $this->path,
+            'duration' => $this->duration,
         ];
     }
 }
