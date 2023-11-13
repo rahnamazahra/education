@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enum\UserRoleEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -18,9 +19,9 @@ class UserFactory extends Factory
             'name' => $this->faker->name,
             'username' => $this->faker->unique()->username,
             'password' => Hash::make('1234567890'),
-            'role' => fake()->randomElement(['guest','teacher']),
+            'role' => $this->faker->randomElement(UserRoleEnum::cases())->value,
             'job' => fake()->jobTitle,
-            'avatar' => 'avatar/pic1.jpg',
+            'avatar' => $this->faker->imageUrl($width = 200, $height = 200),
 
         ];
     }

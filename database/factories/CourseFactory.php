@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enum\CourseLevelEnum;
 use App\Models\Course;
 use App\Models\Subcategory;
 use App\Models\User;
@@ -21,16 +22,14 @@ class CourseFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name,
-            'slug' => Str::slug($this->faker->slug),
-            'level' => 'begginer',
-            "price" => 100000,
-            "discount" => 10,
-            "language" => "fa",
-            "description" => $this->faker->sentence(5),
-            'banner'  => 'course/pic1.jpg',
-            'teacher_id' => $this->faker->randomElement(User::where('role', 'teacher')->get())['id'],
-            'subcategory_id' => $this->faker->randomElement(Subcategory::all())['id'],
+            'name' => $this->faker->words(),
+            'slug' => $this->faker->slug,
+            'level' => $this->faker->randomElement(CourseLevelEnum::cases())->value,
+            'price' => $this->faker->numberBetween($min = 1500, $max = 6000),
+            'discount' => $this->faker->numberBetween(1, 30),
+            'language' => "fa",
+            'description' => $this->faker->sentence(5),
+            'banner' => $this->faker->imageUrl($width = 200, $height = 200),
         ];
     }
 }

@@ -12,7 +12,7 @@ return new class extends Migration
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug')->unique()->nullable();
+            $table->string('slug')->unique();
             $table->integer('duration');
             $table->text('path');
             $table->foreignId('chapter_id')->constrained();

@@ -19,8 +19,8 @@ class SubcategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name,
-            'slug' => Str::slug($this->faker->slug),
+            'name' => $this->faker->words(),
+            'slug' => $this->faker->slug,
             'category_id' => $this->faker->randomElement(Category::all())['id'],
         ];
     }

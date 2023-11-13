@@ -14,9 +14,8 @@ class ChapterFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name,
-            'slug' => Str::slug($this->faker->slug),
-            'course_id' => $this->faker->randomElement(Subcategory::all())['id'],
+            'name' => $this->faker->words,
+            'slug' => $this->faker->slug,
         ];
     }
 }

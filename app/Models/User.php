@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\UserRoleEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -24,14 +25,15 @@ class User extends Authenticatable
         'password',
         'remember_token',
         'mobile',
+        'role',
         'created_at',
         'updated_at',
-        'role',
     ];
 
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'role' => UserRoleEnum::class
     ];
 
     public function courses()

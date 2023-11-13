@@ -11,7 +11,7 @@ class ChapterResource extends JsonResource
     {
         return [
             'name' => $this->name,
-            'lessons' => LessonResource::collection($this->lessons),
+            'lessons' => LessonResource::collection($this->whenLoaded('lessons')),
             'total_duration' => $this->total_duration,
             'total_video' => $this->total_videos,
         ];

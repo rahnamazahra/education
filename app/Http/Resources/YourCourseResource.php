@@ -9,15 +9,8 @@ class YourCourseResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
-        return [
-            "link"=> $this->link,
-            "name"=> $this->name,
-            "banner"=> $this->banner,
-            'level' => $this->level,
-            'lesson' => $this->total_lessons,
-            'students' => $this->total_students,
-            "teacher" => new TeacherResource($this->teacher),
-        ];
+        $yourCourses = CourseResource::collection($this->courses);
+        return $yourCourses->merge(['teacher' => new TeacherResource($this->teacher)]);
 
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\CourseLevelEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -25,6 +26,9 @@ class Course extends Model
         "banner",
         "teacher_id",
         "subcategory_id"
+    ];
+    protected $casts = [
+        'level' =>CourseLevelEnum::class
     ];
 
     public function subcategory(): BelongsTo

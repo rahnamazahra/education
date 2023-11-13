@@ -19,11 +19,10 @@ class LessonFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name,
-            'slug' => Str::slug($this->faker->slug),
-            'path'  => $this->faker->url,
-            'duration' => 3600,
-            'chapter_id' => $this->faker->randomElement(Chapter::all())['id'],
+            'name' => $this->faker->words(),
+            'slug' => $this->faker->slug,
+            'path' => $this->faker->url,
+            'duration' => $this->faker->numberBetween(60, 3600),
         ];
     }
 }

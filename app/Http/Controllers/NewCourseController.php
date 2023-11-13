@@ -21,9 +21,9 @@ class NewCourseController extends Controller
             });
         }
 
-            return CourseResource::collection($courses->latest()
-            ->take(6)
-            ->get()
+        return CourseResource::collection($courses->latest()
+        ->take(6)
+        ->get()
         );
 
     }

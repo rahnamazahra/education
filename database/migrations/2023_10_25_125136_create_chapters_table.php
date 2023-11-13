@@ -12,9 +12,8 @@ return new class extends Migration
         Schema::create('chapters', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug')->unique()->nullable();
+            $table->string('slug')->unique();
             $table->foreignId('course_id')->constrained();
-            $table->unique('id', 'course_id');
             $table->timestamps();
         });
     }
