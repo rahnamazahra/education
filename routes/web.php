@@ -20,7 +20,7 @@ Route::get('/your-courses', [YourCourseController::class, 'latest'])->middleware
 
 Route::get('/your-courses/all', [YourCourseController::class, 'all'])->middleware('auth');
 
-Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories', CategoryController::class);
 
 Route::get('/subcategories/filter/{subcategory:slug}', FilterBySubcategoryController::class);
 

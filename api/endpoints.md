@@ -4,5 +4,5 @@
 /new-courses
 /best-instructors
 /your-courses
-/subscribe (post)
+/your-courses All
 /top-courses
