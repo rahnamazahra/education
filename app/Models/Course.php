@@ -28,7 +28,7 @@ class Course extends Model
         "subcategory_id"
     ];
     protected $casts = [
-        'level' =>CourseLevelEnum::class
+        'level' => CourseLevelEnum::class
     ];
 
     public function subcategory(): BelongsTo
@@ -94,18 +94,18 @@ class Course extends Model
         );
     }
 
-    public function totalVotes():Attribute
+    public function totalVotes(): Attribute
     {
         return Attribute::make(
             get: fn() => $this->ratings()->count(),
         );
     }
 
-    public function totalVideos():Attribute
+    public function totalVideos(): Attribute
     {
         return Attribute::make(function () {
             return $this->chapters->sum(function ($chapter) {
-                return $chapter->lessons->sum(fn ($lesson) => $lesson->count());
+                return $chapter->lessons()->count();
             });
         });
     }
@@ -131,14 +131,23 @@ class Course extends Model
         );
     }
 
-    public static function scopeSearch($query, $search)
+    public function scopeSearch($query, $search)
     {
         return $query
             ->where('name', 'like', "%$search%")
-            ->orWhere('category.name', 'like', "%$search%")
-            ->orWhereHas('lessons', function ($q) use ($search) {
-                return $q->where('lessons.name', 'like', "%$search%");
+            ->orWhere(function ($query) use ($search) {
+                $query->whereRelation('teacher', 'name', 'like', "%$search%");
+            })
+            ->orWhere(function ($query) use ($search) {
+                $query->whereRelation('subcategory', 'name', 'like', "%$search%");
             });
+    }
+
+    public function scopeSearchByCategory($query, $search)
+    {
+        return $query->whereHas('category', function ($q) use ($search) {
+            $q->where('name', 'like', "%$search%");
+        });
     }
 
     public static function scopeTopCourses($query)

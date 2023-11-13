@@ -14,7 +14,7 @@ class ChapterFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->words,
+            'name' => $this->faker->word,
             'slug' => $this->faker->slug,
         ];
     }

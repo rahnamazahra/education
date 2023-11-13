@@ -8,4 +8,12 @@ enum CourseLevelEnum: string
     case INTERMEDIATE = 'intermediate';
     case ADVANCED = 'advanced';
 
+    public function title()
+    {
+        return match ($this) {
+            self::BEGINNER => 'مبتدی',
+            self::INTERMEDIATE => 'متوسط',
+            self::ADVANCED => 'پیشرفته',
+        };
+    }
 }

@@ -19,7 +19,7 @@ class LessonFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->words(),
+            'name' => $this->faker->word,
             'slug' => $this->faker->slug,
             'path' => $this->faker->url,
             'duration' => $this->faker->numberBetween(60, 3600),

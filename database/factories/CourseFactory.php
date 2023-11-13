@@ -22,14 +22,15 @@ class CourseFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->words(),
+            'name' => $this->faker->word,
             'slug' => $this->faker->slug,
             'level' => $this->faker->randomElement(CourseLevelEnum::cases())->value,
             'price' => $this->faker->numberBetween($min = 1500, $max = 6000),
             'discount' => $this->faker->numberBetween(1, 30),
             'language' => "fa",
-            'description' => $this->faker->sentence(5),
+            'description' => $this->faker->sentence,
             'banner' => $this->faker->imageUrl($width = 200, $height = 200),
+            'teacher_id' => fake()->randomElement(User::whereRole('teacher')->pluck('id'))
         ];
     }
 }

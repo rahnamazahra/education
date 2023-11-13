@@ -34,8 +34,6 @@ class Category extends Model
 
     public static function scopeSearch($query, $search)
     {
-        return Subcategory::query()
-            ->whereHas('category', fn ($q) => $q->where('slug', $search))
-            ->get();
+        return $query->where('slug', 'like', "%$search%");
     }
 }

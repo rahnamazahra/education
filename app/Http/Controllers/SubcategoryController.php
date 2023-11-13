@@ -11,6 +11,6 @@ class SubcategoryController extends Controller
 {
     public function __invoke()
     {
-        return CourseResource::collection(Subcategory::with('courses')->get());
+        return Subcategory::with('courses')->get();
     }
 }

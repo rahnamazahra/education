@@ -30,14 +30,14 @@ class Chapter extends Model
     public function totalVideos(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->lessons->count(),
+            get: fn() => $this->lessons()->count(),
         );
     }
 
     public function totalDuration(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->lessons->sum('duration'),
+            get: fn() => $this->lessons()->sum('duration'),
         );
     }
 

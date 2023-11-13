@@ -40,6 +40,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Course::class);
     }
+    
     public function ratings()
     {
         return $this->hasMany(rating::class);

@@ -17,7 +17,8 @@ class CourseResource extends JsonResource
             'total_lesson' => $this->total_lessons,
             'total_students' => $this->total_students,
             'total_rating' => $this->total_ratings,
-            'banner' => url($this->banner)
+            'banner' => url($this->banner),
+            'teacher' => new UserResource($this->whenLoaded('teacher')),
         ];
     }
 }

@@ -17,7 +17,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'username' => $this->faker->unique()->username,
+            'username' => $this->faker->unique()->userName,
             'password' => Hash::make('1234567890'),
             'role' => $this->faker->randomElement(UserRoleEnum::cases())->value,
             'job' => fake()->jobTitle,

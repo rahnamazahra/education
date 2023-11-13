@@ -9,7 +9,7 @@ class CourseController extends Controller
 {
     public function __invoke()
     {
-        return CourseResource::collection(Course::paginate(10));
+        return CourseResource::collection(Course:: get());
     }
 
 }
