@@ -101,22 +101,14 @@ class Course extends Model
         );
     }
 
-    public function totalVideos(): Attribute
+
+    public function totalDurations(): Attribute
     {
-        return Attribute::make(function () {
-            return $this->chapters->sum(function ($chapter) {
-                return $chapter->lessons()->count();
-            });
-        });
-    }
+        $seconds = $this->lessons()->sum('duration')->get();
 
-    public function totalDurations()
-    {
-        $lessons = $this->lessons()->with('video')->get();
-
-        $seconds = $lessons->sum('video.duration');
-
-        return sprintf('%02d:%02d:%02d', ($seconds/ 3600),($seconds/ 60 % 60), $seconds% 60);
+        return Attribute::make(
+            get: fn() => sprintf('%02d:%02d:%02d', ($seconds/ 3600), ($seconds/ 60 % 60), $seconds% 60),
+        );
     }
 
     public function getLinkAttribute()

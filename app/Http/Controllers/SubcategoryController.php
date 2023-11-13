@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\CourseResource;
 use App\Http\Resources\SubcategoryResource;
-use App\Models\Course;
 use App\Models\Subcategory;
 
 

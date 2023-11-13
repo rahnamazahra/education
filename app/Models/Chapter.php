@@ -27,19 +27,20 @@ class Chapter extends Model
         return $this->hasMany(Lesson::class);
     }
 
-    public function totalVideos(): Attribute
+    public function totalLessons(): Attribute
     {
         return Attribute::make(
             get: fn() => $this->lessons()->count(),
         );
     }
 
-    public function totalDuration(): Attribute
+    public function totalDurations(): Attribute
     {
+        $seconds = $this->lessons()->sum('duration')->get();
+
         return Attribute::make(
-            get: fn() => $this->lessons()->sum('duration'),
+            get: fn() => sprintf('%02d:%02d:%02d', ($seconds/ 3600), ($seconds/ 60 % 60), $seconds% 60),
         );
     }
-
 
 }

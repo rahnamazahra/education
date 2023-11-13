@@ -32,8 +32,4 @@ class Category extends Model
         return $this->hasManyThrough(Course::class, Subcategory::class);
     }
 
-    public static function scopeSearch($query, $search)
-    {
-        return $query->where('slug', 'like', "%$search%");
-    }
 }
